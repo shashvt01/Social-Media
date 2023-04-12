@@ -69,7 +69,6 @@ const Navbar = (setOpen) => {
       <div className="right">
         <LogoutIcon onClick = {logout} style={{cursor:"pointer"}}/>
         <AddBoxOutlinedIcon onClick={toggleOpen} style={{cursor:"pointer"}} />
-        
         <NotificationsOutlinedIcon />
         <div className="user" onClick={() => navigate(`/profile/${currentUser._id}`)}>
           <img src={currentUser?.img} alt="" />

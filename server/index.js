@@ -7,6 +7,10 @@ import userRoutes from "./routes/User.js"
 import dotenv from "dotenv";
 import cors from'cors';
 import cookieParser from "cookie-parser";
+import { createServer } from "http";
+import { Server }  from "socket.io";
+
+
 mongoose.set("strictQuery", false);
 
 
@@ -23,6 +27,30 @@ app.use("/api/user",userRoutes);
 app.use(cors());
 
 
+const connect = () =>{
+  mongoose.connect(process.env.MONGO).then(() =>{
+      console.log("connected to DB");
+  }).catch((error) => {throw error;});
+}
+
+app.listen(8082, () => {
+connect();
+console.log("connnected");
+})
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("We are live and connected");
+  console.log(socket.id);
+});
+
 
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin','*');
@@ -30,11 +58,8 @@ app.use(cors());
   });
 
 
-const connect = () =>{
-    mongoose.connect(process.env.MONGO).then(() =>{
-        console.log("connected to DB");
-    }).catch((error) => {throw error;});
-}
+
+
 
 
 app.use((err , req, res, next) => {
@@ -48,7 +73,4 @@ app.use((err , req, res, next) => {
 })
 
 
-app.listen(8082, () => {
-    connect();
-    console.log("connnected");
-})
+
