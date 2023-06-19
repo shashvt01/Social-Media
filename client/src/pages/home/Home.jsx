@@ -7,28 +7,18 @@ import Stories from "../../components/stories/Stories"
 import { FormpageContext } from "../../context/formPageContext"
 import { UpdateContext } from "../../context/UpdateContext"
 import "./home.scss"
-import io from 'socket.io-client';
+import { WebcamCapture } from "../Webcam/Webcam"
 
 const Home = () => {
   const {formpage} = useContext(FormpageContext);
+  const currentUser = JSON.parse(localStorage.getItem('user')); 
   const {updatepostId, currentId} = useContext(UpdateContext);
 
-
-  var socket = io('http://localhost:8082');
-            socket.on('greeting-from-server', function (message) {
-                document.body.appendChild(
-                    document.createTextNode(message.greeting)
-                );
-                console.log("connected")
-                socket.emit('greeting-from-client', {
-                    greeting: 'Hello Server'
-                });
-            });
- 
 
   return (
     <div className="home">
       <Stories/>
+      {/* <WebcamCapture/> */}
       <Posts setCurrentId={updatepostId}/>
     </div>
     

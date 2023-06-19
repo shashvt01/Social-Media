@@ -7,11 +7,14 @@ import userRoutes from "./routes/User.js"
 import dotenv from "dotenv";
 import cors from'cors';
 import cookieParser from "cookie-parser";
-import { createServer } from "http";
-import { Server }  from "socket.io";
-
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const http = require('http');
+// import { Server } from "http";
+import {Server} from "socket.io";
 
 mongoose.set("strictQuery", false);
+
 
 
 dotenv.config();
@@ -33,33 +36,20 @@ const connect = () =>{
   }).catch((error) => {throw error;});
 }
 
+
+
+
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin','*');
+//   next();
+// });
+
+
 app.listen(8082, () => {
-connect();
-console.log("connnected");
-})
-
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
-
-io.on("connection", (socket) => {
-  console.log("We are live and connected");
-  console.log(socket.id);
-});
-
-
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin','*');
-    next();
-  });
-
-
-
-
+  connect();
+  console.log("connnected");
+  })
 
 
 app.use((err , req, res, next) => {

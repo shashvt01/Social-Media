@@ -39,6 +39,10 @@
                 
             }
 
+            .icon{
+                display: flex;
+            }
+
             .user {
                 display: flex;
                 align-items: center;
@@ -90,6 +94,7 @@
 
                     button {
                         border: none;
+                        border-radius: 5px;
                         padding: 5px;
                         color: white;
                         cursor: pointer;

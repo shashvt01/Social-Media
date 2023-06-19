@@ -8,6 +8,8 @@ import { FormpageContextProvider } from './context/formPageContext';
 import { Provider } from 'react-redux';
 import { store, persistor } from './reducers/store.js'
 import { UpdateContext, UpdateContextProvider } from './context/UpdateContext';
+import { SocketContextProvider } from './context/socketContext';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,9 +19,12 @@ root.render(
       <AuthContextProvider>
         <FormpageContextProvider>
           <UpdateContextProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
+            <SocketContextProvider>
+              <Provider store={store}>
+                <App />
+              </Provider> 
+            </SocketContextProvider>
+            
           </UpdateContextProvider>
         </FormpageContextProvider>
       </AuthContextProvider>

@@ -38,6 +38,10 @@ const UserSchema = new mongoose.Schema({
     fromGoogle:{
         type:Boolean,
         default:false
+    },
+    isOnline:{
+        type : Boolean,
+        default:true
     }
 
 },

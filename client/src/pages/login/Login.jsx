@@ -23,6 +23,7 @@ const  Login = () => {
   const handleSubmit = (e) =>{
     e.preventDefault();
     dispatch(signin(form,navigate));
+    navigate('/');
   };
 
   const handleChange = (e) => setForm({...form, [e.target.name] : e.target.value});
@@ -61,11 +62,11 @@ const  Login = () => {
           <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Email" id="emial" name="email"  onChange={handleChange}/>
             <input type="password" placeholder="Password" id="password" name="password" onChange={handleChange}/>
-            <button type="submit">Login</button> 
+            <button name="login" type="submit">Login</button> 
             </form>
 
             or
-            <button type="submit" onClick={signInWithGoogle}>Login with Google</button>
+            <button name = "loginwithGoogle" type="submit" onClick={signInWithGoogle}>Login with Google</button>
 
         </div>
       </div>

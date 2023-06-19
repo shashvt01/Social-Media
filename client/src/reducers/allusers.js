@@ -11,6 +11,9 @@ const allusersReducer = (state = {allusers:[]}, action) =>{
             return{
                 ...state, allusers: state.allusers.map((user) => (user._id === action.payload.user._id ? action.payload.user : user) && (user._id === action.payload.currentUser._id ? action.payload.currentUser : user))
             }
+        
+        case 'DISMISS':
+            return{...state, allusers:state.allusers.filter((user) => user._id !== action.payload )};
 
         default:
             return state;

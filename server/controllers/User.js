@@ -5,6 +5,7 @@ export const getUsers = async(req,res) => {
         const users = await User.find();
         if(!users) return res.status(401).json("No user found");
         res.status(200).json({data: users});
+        
 
     }catch(err){
         console.log(err);

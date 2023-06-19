@@ -21,6 +21,7 @@ import { AuthContext } from './context/authContext';
 import Form from './components/createPost/Form';
 import { FormpageContext } from './context/formPageContext';
 import { UpdateContext } from './context/UpdateContext';
+import Room from './pages/Room/Room';
 
 
  
@@ -74,6 +75,10 @@ function App() {
           element:<Profile/>
         },
       ]
+    },
+    {
+      path:'/room/:roomId',
+      element:<Room/>
     },
     {
       path: "/login",

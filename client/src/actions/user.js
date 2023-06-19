@@ -12,7 +12,7 @@ export const fetchUser =(id) =>async(dispatch) =>  {
         console.log(err);
     }
 }
-export const fetchUsers =() =>async(dispatch) =>  {
+export const fetchUsers = () =>async(dispatch) =>  {
     try{
         const {data: {data}} = await api.fetchUsers();
         dispatch({type:FETCH_USERS, payload:{data}});

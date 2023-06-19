@@ -8,11 +8,13 @@ import PlaceIcon from "@mui/icons-material/Place";
 import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 import Posts from "../../components/posts/Posts"
 import { fetchUser,followUser, unfollowUser } from "../../actions/user.js";
 import {useLocation} from 'react-router-dom'
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 
 
 
@@ -94,6 +96,7 @@ const Profile = () => {
               </div>
               
             </div>
+            
             <div className="item" >
                 <span style={{fontSize:"14px", marginRight:"10px"}}>{user?.followers} followers</span>
                 <span style={{fontSize:"14px"}}>{user?.following} following</span>
@@ -103,13 +106,16 @@ const Profile = () => {
             <button style={{backgroundColor:"red"}} onClick={handleUnfollow}>Unfollow</button>
             :
             <button onClick={handleFollow }>Follow</button>
-
+            
             )
             }
+            
           </div>
           <div className="right">
             <EmailOutlinedIcon />
+            <VideoCallIcon/>
             <MoreVertIcon />
+            
           </div>
         </div>
       <Posts/>

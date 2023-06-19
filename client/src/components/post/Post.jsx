@@ -100,8 +100,7 @@ const Post = ({ post, setCurrentId }) => {
                 </div>
                 <div className="info">
                     <div className="item">
-
-                        <div style={{cursor:"pointer" }}  disabled={!currentUser} onClick={handleLike} >
+                        <div style={{cursor:"pointer" }} name = "likebutton"  disabled={!currentUser} onClick={handleLike} >
                             <Likes  />
                         </div>
                         

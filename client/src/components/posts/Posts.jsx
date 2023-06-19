@@ -3,7 +3,9 @@ import React, {useEffect} from 'react'
 import Post from "../post/Post";
 import { useDispatch, useSelector } from "react-redux";
 import posts from "../../reducers/posts";
-import { getPosts } from "../../actions/posts";
+import { getPosts} from "../../actions/posts";
+import { fetchUsers} from "../../actions/user";
+
 import { useLocation } from "react-router-dom";
 
 const Posts =({setCurrentId}) => {
@@ -13,6 +15,7 @@ const Posts =({setCurrentId}) => {
 
   useEffect(() =>{
    dispatch(getPosts());
+   dispatch(fetchUsers());
   }, [location]);
 
   // if(!posts.length && !isLoading) return "No posts";
@@ -41,7 +44,7 @@ const Posts =({setCurrentId}) => {
   return (
     <div className="posts">
       {posts?.map(post=>(
-        <Post post={post} setCurrentId={setCurrentId} key={post?._id}/>
+        <Post post={post} setCurrentId={setCurrentId} key={post._id}/>
       ))}
     </div>
   )
